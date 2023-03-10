@@ -30,7 +30,6 @@ public class ProductRepoImp implements ProductRepo {
     public Product getProductById(long id) {
         for (Product p : products) {
             if (p.getId() == id) {
-                System.out.println(p.getId());
                 return p;
             }
         }
