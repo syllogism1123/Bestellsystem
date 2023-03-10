@@ -67,7 +67,6 @@ class ShopServiceTest {
         assertThat(service.listOrders())
                 .hasSize(2)
                 .contains(newOrder);
-
     }
 
     @Test
