@@ -2,6 +2,7 @@ package org.example.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Order {
     static final String ANSI_CYAN = "\u001B[36m";
@@ -55,6 +56,18 @@ public class Order {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Order order)) return false;
+        return id == order.id && products.equals(order.products) && status == order.status && dateTime.equals(order.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, products, status, dateTime);
     }
 
     @Override
