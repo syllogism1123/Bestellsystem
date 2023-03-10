@@ -58,7 +58,11 @@ class ShopServiceTest {
 
     @Test
     void testAddOrder() {
-        Order newOrder = new Order(2, List.of(new Product(11, "Paper"),
+        assertThat(service.listOrders())
+                .hasSize(1);
+
+        Order newOrder = new Order(2, List.of(
+                new Product(11, "Paper"),
                 new Product(22, "Pencil"),
                 new Product(33, "Eraser")),
                 IN_PROGRESS,
@@ -79,8 +83,10 @@ class ShopServiceTest {
     void testListOrders() {
         assertThat(service.listOrders())
                 .hasSize(1)
-                .contains(new Order(1, List.of(new Product(11, "Paper"),
-                        new Product(22, "Pencil")), COMPLETED,
+                .contains(new Order(1, List.of(
+                        new Product(11, "Paper"),
+                        new Product(22, "Pencil")),
+                        COMPLETED,
                         LocalDateTime.of(2023, 3, 9, 10, 30, 15)));
     }
 }
