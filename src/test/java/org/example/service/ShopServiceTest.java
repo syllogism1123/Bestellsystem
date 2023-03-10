@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.example.model.OrderStatus.COMPLETED;
+import static org.example.model.OrderStatus.IN_PROGRESS;
 
 
 class ShopServiceTest {
@@ -57,7 +58,15 @@ class ShopServiceTest {
 
     @Test
     void testAddOrder() {
-
+        Order newOrder = new Order(2, List.of(new Product(11, "Paper"),
+                new Product(22, "Pencil"),
+                new Product(33, "Eraser")),
+                IN_PROGRESS,
+                LocalDateTime.of(2023, 3, 10, 12, 30, 15));
+        service.addOrder(newOrder);
+        assertThat(service.listOrders())
+                .hasSize(2)
+                .contains(newOrder);
 
     }
 
