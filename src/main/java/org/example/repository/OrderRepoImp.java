@@ -2,6 +2,7 @@ package org.example.repository;
 
 import org.example.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -21,7 +22,7 @@ public class OrderRepoImp implements OrderRepo {
 
     @Override
     public List<Order> list() {
-        return orders;
+        return new ArrayList<>(orders);
     }
 
     @Override
@@ -31,9 +32,8 @@ public class OrderRepoImp implements OrderRepo {
             if (o.getId() == id) {
                 return o;
             }
-            throw new NoSuchElementException("This Order does not exist.");
         }
-        return null;
+        throw new NoSuchElementException("This Order does not exist.");
     }
 
     @Override

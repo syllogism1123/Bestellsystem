@@ -17,7 +17,6 @@ import static org.example.model.OrderStatus.*;
 
 
 public class Main {
-    static final String ANSI_CYAN = "\u001B[36m";
     public static void main(String[] args) {
         Product p1 = new Product(11, "Paper");
         Product p2 = new Product(22, "Pencil");
@@ -39,14 +38,15 @@ public class Main {
                 case "S" -> {
                     System.out.println("please enter Product's Id ");
                     input = scanner.nextLine();
-                    System.out.println(service.getProductById(Integer.parseInt(input)));
+                    System.out.println(service.getProductById(Long.parseLong(input)));
                 }
                 case "ADD" -> {
                     List<Product> products = new ArrayList<>();
                     while (true) {
                         System.out.println("please enter your new Product's Id");
                         input = scanner.nextLine();
-                        Product p = service.getProductById(Integer.parseInt(input));
+                        System.out.println(service.listProducts());
+                        Product p = service.getProductById(Long.parseLong(input));
                         products.add(p);
                         System.out.println("Enter Y for add a new one Enter N for quit ");
                         input = scanner.nextLine();
@@ -60,7 +60,7 @@ public class Main {
                     }
                     System.out.println("please enter your new Order's Id");
                     input = scanner.nextLine();
-                    Order newOrder = new Order(Integer.parseInt(input), products, IN_PROGRESS,
+                    Order newOrder = new Order(Long.parseLong(input), products, IN_PROGRESS,
                             LocalDateTime.of(2023, 3, 10, 12, 30, 15));
                     service.addOrder(newOrder);
                     System.out.println("newOrder: " + newOrder);
@@ -69,7 +69,7 @@ public class Main {
                 default -> System.out.println("Invalid input");
             }
         } catch (Exception e) {
-            System.out.println("Invalid input");
+            e.printStackTrace();
         }
     }
 }

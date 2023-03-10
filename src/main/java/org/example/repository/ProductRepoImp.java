@@ -1,8 +1,8 @@
 package org.example.repository;
 
-import org.example.model.Order;
 import org.example.model.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -23,18 +23,18 @@ public class ProductRepoImp implements ProductRepo {
 
     @Override
     public List<Product> list() {
-        return products;
+        return new ArrayList<>(products);
     }
 
     @Override
     public Product getProductById(long id) {
         for (Product p : products) {
             if (p.getId() == id) {
+                System.out.println(p.getId());
                 return p;
             }
-            throw new NoSuchElementException("This Product does not exist.");
         }
-        return null;
+        throw new NoSuchElementException("This Product does not exist.");
     }
 
 }

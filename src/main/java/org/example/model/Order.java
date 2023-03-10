@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
+    static final String ANSI_CYAN = "\u001B[36m";
+    static final String ANSI_RESET = "\u001B[0m";
     private long id;
     private List<Product> products;
 
@@ -58,6 +60,6 @@ public class Order {
     @Override
     public String toString() {
         return "Order{" + "id=" + id + ", products=" + products + "," +
-                " status=" + status + ", dateTime=" + dateTime + '}' + "\n";
+                ANSI_CYAN + " status=" + status + ANSI_RESET + ", dateTime=" + dateTime + '}' + "\n";
     }
 }
