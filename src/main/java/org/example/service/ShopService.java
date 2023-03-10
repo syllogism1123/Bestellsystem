@@ -17,7 +17,7 @@ public class ShopService {
     }
 
 
-    public Product getProductById(int id) {
+    public Product getProductById(long id) {
         return productRepo.getProductById(id);
     }
 
@@ -29,7 +29,7 @@ public class ShopService {
         orderRepo.add(order);
     }
 
-    public Order getOrderById(int id) {
+    public Order getOrderById(long id) {
 
         return orderRepo.getOrderById(id);
     }
